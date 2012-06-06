@@ -1,0 +1,44 @@
+
+
+<DIV id=u0 style="position:absolute; left:30px; top:104px; width:160px; height:22px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u0_rtf><span style=" font-family:'Arial'; color:#000080; font-size:14pt;">Log in to Minetoo</span></DIV></DIV>
+<DIV id=u1 style="position:absolute; left:29px; top:143px; width:528px; height:30px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u1_rtf><span style=" font-family:'Arial'; color:#000000; font-size:9pt;">After you've logged in, you'll go straight to the My Birthday page. From there you can access all the Minetoo Member benefits. </span></DIV></DIV>
+
+
+<%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
+
+<%= f.error_messages %>
+
+<DIV id=u2 style="position:absolute; left:84px; top:245px; width:90px; height:16px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u2_rtf><span style=" font-family:'Arial'; color:#000000; font-size:10pt;"><%=f.label :Email_Address %></span> <%= f.error_messages %> </DIV></DIV>
+
+
+<%= f.text_field :email,:style=>"position:absolute; left:184px; top:240px; width:175px; height:25px; ; ; text-align: left ; font-family:'Arial'; font-size: 10pt; color:#000000; font-style:normal; font-weight:normal; text-decoration:none"   %>
+
+
+
+<DIV id=u4 style="position:absolute; left:110px; top:299px; width:60px; height:16px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u4_rtf><span style=" font-family:'Arial'; color:#000000; font-size:10pt;"><%= f.label :password %></span></DIV></DIV>
+<%= f.password_field :password,:style=>"position:absolute; left:184px; top:295px; width:175px; height:25px; ; ; text-align: left ; font-family:'Arial'; font-size: 10pt; color:#000000; font-style:normal; font-weight:normal; text-decoration:none" %>
+
+<%= f.submit "Sign in",:style=>"position:absolute; left:180px; top:350px; width:90px; height:25px; ; ; text-align: center ; font-family:'Arial'; font-size: 10pt; color:#000000; font-style:normal; font-weight:normal; text-decoration:none" %>
+
+<DIV id=u7contain style="position:absolute; left:180px; top:385px; width:155px; height:26px;; overflow:visible">
+
+<DIV id=u811 style="position:absolute; left:2px; top:5px; width:150px; height:15px; ; ; text-align: center ; font-family:Arial; text-align:left;" >
+<DIV id=u811_rtf><div style="text-align:center"><span style=" font-family:'Arial'; color:#333399; font-size:9pt;"><%= link_to "Signup",signupprofile_path %></span></div></DIV></DIV>
+</DIV>
+
+<DIV id=u7container style="position:absolute; left:180px; top:410px; width:155px; height:26px;; overflow:visible">
+
+<DIV id=u8 style="position:absolute; left:2px; top:5px; width:150px; height:15px; ; ; text-align: center ; font-family:Arial; text-align:left;" >
+<DIV id=u8_rtf><div style="text-align:center"><span style=" font-family:'Arial'; color:#333399; font-size:9pt;"><%= link_to "Forgotten your password?",new_user_password_path %></span></div></DIV></DIV>
+</DIV>
+
+<DIV id=u9 style="position:absolute; left:10px; top:449px; width:530px; height:31px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u9_rtf><span style=" font-family:'Arial'; color:#000000; font-size:9pt;">Use the email address you registered with, and the password which was emailed to you to log in.</span></DIV></DIV>
+
+
+<% end %>
+

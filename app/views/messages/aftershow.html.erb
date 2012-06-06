@@ -1,0 +1,22 @@
+
+<div style="position:absolute; left:30px; top:100px; width:570px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<h3>Messages you received from <%= @name %></h3>
+<%=link_to "Send reply message to #{@name}...", "/sendmessage/#{@sender}"%>
+<br>
+<% if @msg.present? %>
+<%@msg.each do |mesg|%>
+<br>
+<table class="curvedEdges">
+	<tr>
+		<td width="170"><%= time_ago_in_words(mesg.created_at) %> ago</td>
+		<td width="325"><%= mesg.message %></td>
+	</tr>
+</table>
+<br>
+<% end %>
+<% end %>
+</div>
+
+<style type="text/css">
+table.curvedEdges { border:3px solid #98FB98; }
+</style>

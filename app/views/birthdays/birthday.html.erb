@@ -1,0 +1,74 @@
+
+<div style="position:absolute; left:20px; top:100px; text-align: left ; " >
+	<ul id="list-nav">
+		<li><u><%= link_to "My exact Birthday",birthday_path %></u></li>
+		<li><u><%= link_to "My Birthday",birthdaysearch_path %></u></li>
+	</ul>
+</div>
+
+<div style="position:absolute; left:200px; top:170px; text-align: left ; color:#3366FF;" >
+	<%= @dateofbirth %>
+</div>
+<br><br><br>
+<%if @user.present? %>
+<%@user.each do |u|%>
+	<% unless u.id==current_user.id %>
+	<br><br><br><br><br><br><br>
+	<div style="position:absolute; left:20px; text-align: left ; " >
+	<span style=" font-family:'Arial'; font-size:11pt;">
+	<table cellspacing=10>
+		<tr>
+			<th colspan=4><u><%=u.name%></u></th>
+		</tr>
+		<tr>
+			<th>Sex : </th>
+			<td><%=u.sex%></td>
+			<th>Hour of birth : </th>
+			<td><%=u.hour_of_birth%></td>
+		</tr>
+		<tr>
+			<th>Born : </td>
+			<td><%=u.born_city%></td>
+			<th>Now lives : </th>
+			<td><%=u.living_city%></td>
+		</tr>
+		<tr>
+			<th>Qualities :</th>
+			<td colspan=3>
+				<%u.qualities.each do |q|%>
+					<%= q %>, 
+				<%end%>
+			</td>
+		</tr>
+		<tr>
+			<th>Biography :</th>
+			<td colspan=3>
+				<%=link_to "Click to read full biography and send messages", "/showprofile/#{u.id}"%>
+			</td>
+	</tr>
+	</table>
+	</span>
+	</div>
+	<br><br><br>
+	<%end%>
+<%end%>
+<%end%>
+
+<style type="text/css">
+
+ul#list-nav li {
+display:inline
+}
+
+ul#list-nav li u {
+text-decoration:none;
+padding:5px 0;
+width:200px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+
+</style>

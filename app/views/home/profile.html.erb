@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+
+
+
+<div style="position:absolute; left:50px; top:100px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
+<h2>Join MineToo</h2>
+<p>Joining Minetoo is easy. First add your details below. Then the interesting part. You'll pick<br>the qualities that best describe you and write a few words about yourself.<br><br>
+Will your description of yourself match up with others who share your birthday? <br>You're about to find out. </p>
+</div>
+<%=form_for :user, :url=>{:action=>'profilesession', :controller=>'home'}, :html=>{:onsubmit=>"return validateform(this)"} do |f|%>
+<div style="position:absolute; left:30px; top:250px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
+<table cellspacing=15>
+	<tr>
+		<th>Your Birthdate</th>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth" size=25> <font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Your Name</th>
+		<td><%= f.text_field :name, "size"=>25 %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Your Email Address</th>
+		<td><%= f.text_field :email , "size"=>25 %><font color="red">*</font></td><td><p class="alert"><font color="red"><%= alert %></font></p></td>
+	</tr>
+	<tr>
+		<th>Sex</th>
+		<td><%= f.radio_button :sex, 'male', :checked => true %>
+		<%= label :male, 'Male' %>
+		<%= f.radio_button :sex, 'Female' %> 
+		<%= label :female, 'Female' %> <font color="red">*</font> </td>
+	</tr>
+	<tr>
+		<th>Hour of Birth</th>
+		<td><%= f.select :hour_of_birth, options_for_select(['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12noon', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'], {:include_blank => 'None'}) %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Where do you live?</th>
+		<td>Town/City <%= f.text_field :living_city, "size"=>18%><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>Country &nbsp&nbsp&nbsp<%= f.country_select :living_country %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Where do you Born?</th>
+		<td>Town/City <%= f.text_field :born_city, "size"=>18%><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>Country &nbsp&nbsp&nbsp<%= f.country_select :born_country %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><%= f.check_box :term_condition %> I accept the Minetoo <%= link_to 'Terms and Conditions',terms_path, :onclick=>"window.open(this.href,'Terms and Conditions', 'height=600, width=600');return false;" %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><%= f.submit "Next" %></td>
+	</tr>
+	
+</table>
+</div>
+<% end %>
+
+<DIV id=u68 style="position:absolute; left:20px; top:760px; width:570px; height:48px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+After you click the Next button, we'll send you an email with a link to click to confirm your address. Remember, we will never reveal your email address to other users or publish it on this site. ... Welcome to the rapidly growing, worldwide, Minetoo community.
+</DIV>
+
+<script>
+     $(function() {
+             $( ".datepick" ).datepicker(
+	     { 
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-60:+0 "
+	     
+	     }); 
+     });
+</script>
+  
+  
+  
+<script type="text/javascript">
+function validateform(f)
+{
+  errortext= "";
+  if (f.date_of_birth.value=="")
+  {
+     errortext="\nYou must select Date of birth";
+  }
+  if (f.user_name.value=="")
+  {
+     errortext+="\nYou must enter your name";
+  }
+  var npattern = /^[a-zA-Z]{4,127}$/;
+  var fname=f.user_name.value;
+  if(!npattern.test(fname))
+  {
+      errortext+="\nName must have atleast 3 characters and no Numeric values allowed";
+   }
+  if (f.user_email.value=="")
+  {
+     errortext+="\nYou must enter your email ";
+  }
+  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+  var fmail=f.user_email.value;
+  if(!empattern.test(fmail))
+  {
+      errortext+="\nEnter vaild email ";
+  }
+  if (f.user_living_city.value=="")
+  {
+     errortext+="\nYou must enter your living city name";
+  }
+  if (f.user_born_city.value=="")
+  {
+     errortext+="\nYou must enter your born city name";
+  }
+  if(!f.user_term_condition.checked)
+  {
+     errortext+="\nPlease accept the terms and conditions";
+  } 
+  if (!errortext== "") 
+  {
+        alert("Error Message:" + errortext);
+        return false;
+  }
+}
+</script>
+  
+  

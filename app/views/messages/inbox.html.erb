@@ -1,0 +1,50 @@
+
+<div style="position:absolute; left:30px; top:100px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+
+  
+	<ul id="list-nav">
+		<li><u><%= link_to "Inbox",showmessage_path %></u></li>
+		<li><u><%= link_to "Outbox",outbox_path %></u></li>
+	</ul>
+	<br><br>
+	<% if @msg.present? %>
+		<p>These are the Minetoo Members you've exchanged messages with.</p>
+		<table cellspacing=10>
+		<tr>
+			<th width=150>Name</th><th width=150>No of Messages</th><th>Message</th>
+		</tr>
+		<% i=0 %>
+		<% @msg.each do |m| %>
+		<tr>
+			<td> <%= @name[i] %> </td>
+			<td> <%= @msg_count[i] %> </td>
+			<td> <%= link_to "View and send replies...","/aftershow/#{m}" %> </td>
+		</tr>	
+		<%i=i+1 %>		
+		<% end %>
+		</table>
+	<% else %>
+		<br><br><br><br>
+		<h2>You have No Inbox Message <h2>
+	<% end%>
+</div>
+
+<style type="text/css">
+
+ul#list-nav li {
+display:inline
+}
+
+ul#list-nav li u {
+text-decoration:none;
+padding:5px 0;
+width:200px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+
+</style>
+

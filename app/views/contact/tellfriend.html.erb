@@ -1,0 +1,106 @@
+
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+<script>
+     $(function() {
+             $( ".datepick" ).datepicker(
+	     { 
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-60:+0 "
+	     
+	     }); 
+     });
+   </script>
+
+<div style="position:absolute; left:20px; top:100px; text-align: left ; font-family:'Arial'; font-size:11pt;" >
+<h2>Tell a friend</h2>
+<h5>Fill in your friend's name and email address, and if you know it, their birthdate, and we'll send them <br>a personalised email to welcome them to Minetoo.</h5>
+<%= form_tag({:controller => "contact", :action => "invite"}, {:onsubmit=>"return validateform(this)"}) do%>
+<table cellspacing=15>
+	<tr>
+		<td>Your friend name</td>
+		<td><%= text_field :tell, :name, "size" => 20 %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<td>Your friend E_mail</td>
+		<td><%= text_field :tell,  :email, "size" => 20 %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<td>Birth date (optional)</td>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth"></td>
+	</tr>
+	<tr>
+		<th>Message (optional)</th>
+		<td><%=text_area :tell,  :biography, :rows=>5, :cols=>30%></td>
+	</tr>
+	<tr>
+		<td>Your name</td>
+		<td><%= text_field :tell,  :your_name, "size" => 20 %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<td>Your E_mail</td>
+		<td><%= text_field :tell,  :your_email, "size" => 20 %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= submit_tag 'Send invitation' %></td>
+	</tr>
+</table>
+<% end %>
+</div>
+
+
+<script type="text/javascript">
+function validateform(f){
+  errortext= "";
+  var npattern = /^[a-zA-Z]{2,15}$/;
+  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+  if (f.tell_name.value=="")
+  {
+     errortext+="\nYou must enter your friend name";
+  }
+  var fname=f.tell_name.value;
+  if(!npattern.test(fname))
+  {
+      errortext+="\nFriend Name does not have Numbers";
+  }
+  if (f.tell_email.value=="")
+  {
+     errortext+="\nYou must enter your friend email ";
+  }
+  var fmail=f.tell_email.value;
+  if(!empattern.test(fmail))
+  {
+      errortext+="\nEnter vaild friend email ";
+  }
+  if (f.tell_your_name.value=="")
+  {
+     errortext+="\nYou must enter your name";
+  }
+  var yname=f.tell_your_name.value;
+  if(!npattern.test(yname))
+  {
+      errortext+="\nYour Name does not have Numbers";
+  }
+  if (f.tell_your_email.value=="")
+  {
+     errortext+="\nYou must enter your email";
+  }
+  var ymail=f.tell_your_email.value;
+  if(!empattern.test(ymail))
+  {
+      errortext+="\nEnter your vaild email ";
+
+  }
+   if (!errortext== "") 
+  {
+        alert("Error Message:" + errortext);
+        return false;
+  }
+
+}
+</script>
+
+

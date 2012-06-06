@@ -1,0 +1,46 @@
+<script src="/javascripts/live.js"></script>
+
+<div style="position:absolute; left:30px; top:100px; width:570px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+	<h2>Send message to <%=@receiver.name%></h2>
+	<p>Be careful when sending messages. Don't include personal information such as addresses, phone numbers and email addresses.</p>
+	<p>We will send your message to <%=@receiver.name%>. Your email address will not be revealed</p>
+	<p>Please add message No blank messages are sent to this user</p><br>
+	<p>To : <%=@receiver.name%></p>
+	<table cellspacing=10>
+		<%=form_for :message, :url=>{:action=>"sendingmessage", :controller=>"messages"} do |f|%>
+			<tr>
+				<td><%=f.hidden_field :user_id, :value=>@sender%></td>
+				<td><%=f.hidden_field :receiver, :value=>@receiver.id%></td>
+				<td><%=f.label :message,"Message"%></td>			
+				<td><%=f.text_area :message, :size => '40x10'%><font color="red">*</font></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td>
+				<td colspan=3><%=f.submit 'Send Message'%></td>
+			</tr>
+		<%end%>
+	</table>
+	<br><br>
+	<h3>Previous Messages you sent to <%= @receiver.name %></h3>
+	<% if @msg.present? %>
+		<%@msg.each do |mesg|%>
+			<br>
+			<table class="curvedEdges">
+				<tr>
+					<td width="170"><%= time_ago_in_words(mesg.created_at) %> ago</td>
+					<td width="325"><%= mesg.message %></td>
+				</tr>
+			</table>
+			<br>
+		<% end %>
+	<% end %>
+</div>
+
+<style type="text/css">
+table.curvedEdges { border:3px solid #98FB98; }
+</style>
+
+<script>
+var f1 = new LiveValidation('message_message');
+f1.add( Validate.Presence );
+</script>

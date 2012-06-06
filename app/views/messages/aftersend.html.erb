@@ -1,0 +1,21 @@
+
+<div style="position:absolute; left:120px; top:115px; text-align: left ; font-family:'Arial'; font-size:12pt; color:#3366FF;" >
+<p>Your message has been successfully sent to <%=@receiver%></p><br>
+</div>
+<div style="position:absolute; left:120px; top:170px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<h3>Message Details</h3>
+<table cellspacing=20 border=2>
+	<tr>
+		<th>Sender</th>
+		<td><%= @sender %></td>
+	</tr>	
+	<tr>
+		<th>Receiver</th>
+		<td><%= @receiver %></td>
+	</tr>
+	<tr>
+		<th>Message</th>
+		<td width="250"><%= $msg.message %></td>
+	</tr>
+</table>
+</div>

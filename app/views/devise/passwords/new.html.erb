@@ -1,0 +1,18 @@
+<script src="/javascripts/live.js"></script>
+<div style="position:absolute; left:50px; top:100px; text-align: left ; " >
+<h2>Forgot your password?</h2>
+<p>Enter your email address below, click the remind me button, and you will be sent a password reminder.</p>
+<%= form_for(resource_name, resource, :url => password_path(resource_name)) do |f| %>
+  <%= f.error_messages %>
+
+  <p><%= f.label :email %>&nbsp<%= f.text_field :email %></p>
+
+  <p><%= f.submit "Remind me" %></p>
+<% end %>
+</div>
+
+<script>
+var f1 = new LiveValidation('user_email');
+f1.add( Validate.Presence );
+f1.add( Validate.Email );
+</script>

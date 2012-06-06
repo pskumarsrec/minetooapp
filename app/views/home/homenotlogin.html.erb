@@ -1,0 +1,71 @@
+
+<%if @user.empty?%>
+	<DIV style="position:absolute; left:40px; top:145px; " ><h4>We have no Minetoo matches for you</h4></div>
+	<DIV style="position:absolute; left:40px; top:200px; width:500px; height:60px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+		<span style=" font-family:'Arial'; color:#000000; font-size:11pt;">By joining Minetoo, you will discover whether the qualities you are about to choose to describe yourself match those already selected by the people listed here. You share a birthday. Now find out what else you have in common. </span>
+	</DIV>
+	</DIV>
+	<%unless current_user%>
+		<%=form_for :join, :url=>{:action=>"profile", :birthday=>@birthday} do |f|%>
+			<%= f.submit 'Join', :style=>"position:absolute; left:650px; top:210px; width:50px; height:50px; color:#0B1907; overflow:visible" %>	    
+		<%end%>
+	<%end%>
+	<div style="position:absolute; left:100px; top:350px; " ><%=link_to "Click here to search again",home_path%> </div>
+<%else%>
+	<div style="position:absolute; left:20px; top:115px; " ><h4>We have <%= @user.length %> Minetoo matches on <%=@dob%></h4></div>
+	<DIV style="position:absolute; left:20px; top:170px; width:430px; height:60px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+		<span style=" font-family:'Arial'; color:#000000; font-size:11pt;">By joining Minetoo, you will discover whether the qualities you are about to choose to describe yourself match those already selected by the people listed here. You share a birthday. Now find out what else you have in common. </span>
+	</DIV>
+	<%unless current_user%>
+		<%=form_for :join, :url=>{:action=>"profile", :birthday=>@birthday} do |f|%>
+			<%= f.submit 'Join', :style=>"position:absolute; left:600px; top:180px; width:60px; height:60px; color:#0B1907; overflow:visible" %>	    
+		<%end%>
+	<%end%>
+	<%unless current_user%>
+		<DIV style="position:absolute; left:20px; top:270px; " >Click the <%=link_to "Join",signupprofile_path%> button to get started. It's fast and it's fun</div>
+	<%end%>
+	<br><br><br><br><br><br><br><br><br>
+	<%@user.each do |u|%>
+		<br><br><br><br><br><br><br>
+		<div style="position:absolute; left:20px; text-align: left ; " >
+		<span style=" font-family:'Arial'; font-size:11pt;">
+		<table>
+			<tr>
+				<th colspan=4><u><%=u.name%></u></th>
+			</tr>
+			<tr>
+				<th>Sex : </th>
+				<td><%=u.sex%></td>
+				<th>Hour of birth : </th>
+				<td><%=u.hour_of_birth%></td>
+			</tr>
+			<tr>
+				<th>Born : </td>
+				<td><%=u.born_city%></td>
+				<th>Now lives : </th>
+				<td><%=u.living_city%></td>
+			</tr>
+			<tr>
+				<th>Qualities :</th>
+				<td colspan=3>
+					<%u.qualities.each do |q|%>
+						<%= q %>, 
+					<%end%>
+				</td>
+			</tr>
+			<tr>
+				<th>Biography :</th>
+				<td colspan=3>
+					<%unless current_user%>
+						<%=link_to "Join",signupprofile_path%><%=" to see which qualities this person used to describe themselves.."%>
+					<%else%>
+						<%=link_to "Click to read full biography and send messages", "/showprofile/#{u.id}"%>
+					<%end%>				
+				</td>
+		</tr>
+		</table>
+		</span>
+		</div>
+	<%end%>
+<%end%>
+

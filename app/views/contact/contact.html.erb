@@ -1,0 +1,52 @@
+
+<div style="position:absolute; left:50px; top:115px; text-align: left ; font-family:'Arial'; font-size:10pt;" >
+<h2>Preferences</h2>
+<br>
+<ul id="list-nav">
+	<li><u><%= link_to "Password",edit_user_registration_path %></u></li>
+	<li><u><%= link_to "Contact",contact_path %></u></li>
+</ul>
+<br><br><br>
+<%=form_for :user, :url=>{:action=>'updatecontact', :controller=>'contact'} do |f|%>
+	<p>Ghoose when you'd like us to contact you.</p>
+	<table class="curvedEdges" cellspacing=10>		
+		<tr>
+			<th><%= f.check_box :new_member_notification %></th>
+			<td>Send me updates when people who share my dob are added</td>
+		</tr>
+		<tr>
+			<th><%= f.check_box :private_message_notification %></th>
+			<td>Let other users send me private messages.</td>
+		</tr>
+		<tr>
+			<th><%= f.check_box :offers_notification %></th>
+			<td>Send me messages about interesting offers from time to time.</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit "Update contact preferences"%></td>
+		</tr>
+	</table>
+<% end %>
+</div>
+
+<style type="text/css">
+
+ul#list-nav li {
+display:inline
+}
+
+ul#list-nav li u {
+text-decoration:none;
+padding:5px 0;
+width:150px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+
+table.curvedEdges { border:3px solid #98FB98; }
+
+</style>

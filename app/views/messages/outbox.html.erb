@@ -1,0 +1,54 @@
+
+<div style="position:absolute; left:30px; top:100px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<ul id="list-nav">
+	<li><u><%= link_to "Inbox",showmessage_path %></u></li>
+	<li><u><%= link_to "Outbox",outbox_path %></u></li>
+</ul>
+<br><br>
+<h4 align="center">Your sent messages...</h4>
+<% if @msg %>
+	<% i=0 %>
+	<%@msg.each do |mesg|%>
+		<br>
+		<table class="curvedEdges">
+			<tr>
+				<td width="150"><%= "Sent to : "%><%=User.find_by_id(mesg.receiver).name%></td>
+				<td width="400"><%= mesg.message %></td>
+			</tr>
+			<tr>
+				<td width="150"><%= time_ago_in_words(mesg.created_at) %> ago</td>
+			</tr>
+		</table>
+		<br>
+		<% i=i+1 %>
+	<% end %>
+	<div style="position:absolute; left:300px; top:800px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+		<%= will_paginate @msg %>
+	<div>
+<% else %>
+		<p>You have No sent messages </p>
+<% end %>
+</div>
+
+
+<style type="text/css">
+
+table.curvedEdges { border:3px solid #98FB98; }
+
+ul#list-nav li {
+display:inline
+}
+
+ul#list-nav li u {
+text-decoration:none;
+padding:5px 0;
+width:200px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+
+</style>
+

@@ -1,0 +1,24 @@
+<div style="position:absolute; left:20px; top:115px; text-align: left ; font-family:'Arial'; font-size:11pt;" >
+<h2>My qualities</h2>
+<br><h5>Select between four and ten qualities which best describe you. Your choices cannot be changed later. <br>Choose carefully. If you dare, get a friend or partner to choose some for you!</h5>
+Please select 4 and 10 qualities from the list
+<br>
+<p class="alert"><font color="red"><%= alert %></font></p>
+<%=form_for :user, :url=>{:action=>'sessions', :controller=>'home'} do |f|%>
+	<% count=1 %>
+	<table cellspacing=10>
+	<% @quality.each do |q| %>
+		<td><%= f.radio_button q, q %><%= q %></td>
+		<%if count%5==0%>
+			<tr></tr>
+		<% end %>
+		<% count=count+1 %>
+	<% end %>
+	<table>
+	<br>
+	<center>
+		<%=f.submit 'Next'%>	
+	</center>
+<%end%>
+</div>
+

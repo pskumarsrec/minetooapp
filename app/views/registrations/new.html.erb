@@ -1,0 +1,29 @@
+<script src="/javascripts/live.js"></script>
+<div style="position:absolute; left:50px; top:100px; text-align: left ; font-family:Arial; text-align:left; font-size: 12pt;" >
+<%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
+<%= f.error_messages %>
+<h2>My Life</h2>
+<p>Now here's your chance to say something about yourself. <br>
+Please write at least four sentences about yourself.<br><br><br>
+<%session[:password]=(rand.*100000000.to_i).floor%>
+<%=f.text_area :biography, :rows=>10, :cols=>50%><font color="red">*</font><br>
+<%=f.hidden_field :date_of_birth, :value=>session[:value][:date_of_birth]%>
+<%=f.hidden_field :name, :value=>session[:value][:name]%>
+<%=f.hidden_field :email, :value=>session[:value][:email]%>
+<%=f.hidden_field :sex, :value=>session[:value][:sex]%>
+<%=f.hidden_field :hour_of_birth, :value=>session[:value][:hour_of_birth]%>
+<%=f.hidden_field :living_city, :value=>session[:value][:living_city]%>
+<%=f.hidden_field :living_country, :value=>session[:value][:living_country]%>
+<%=f.hidden_field :born_city, :value=>session[:value][:born_city]%>
+<%=f.hidden_field :born_country, :value=>session[:value][:born_country]%>
+<%=f.hidden_field :password, :value=>session[:password]%>
+<%= f.hidden_field :password_confirmation, :value=>session[:password]%><br>
+<%= f.submit "Next" %>
+<% end %>
+</div>
+
+<script>
+var f1 = new LiveValidation('user_biography');
+f1.add( Validate.Presence );
+f1.add( Validate.Length, { minimum: 50 } );
+</script>

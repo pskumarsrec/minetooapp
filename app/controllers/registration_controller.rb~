@@ -1,0 +1,31 @@
+class RegistrationsController < Devise::RegistrationsController
+
+  def new
+    build_resource({})
+    render_with_scope :new
+  end
+
+  # POST /resource/sign_up
+  def create
+    build_resource
+    puts "***********************************************"
+      puts params[:id]
+      puts "***********************************************"
+    if resource.save
+      
+      #@term=User.find_by_id(
+      #@pho.term_condition=resource.id	 
+      #@pho.save
+      set_flash_message :notice, :signed_up
+      sign_in_and_redirect(resource_name, resource)
+    else
+      clean_up_passwords(resource)
+      render_with_scope :new
+    end
+  end
+
+  # GET /resource/edit
+  def edit
+    render_with_scope :edit
+  end
+end

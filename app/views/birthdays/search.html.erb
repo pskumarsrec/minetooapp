@@ -1,0 +1,43 @@
+ <%if @user.present? %>  
+<br><br><br><br>
+<%@user.each do |u|%>
+   <% unless u.id==current_user.id %>
+	<div style="position:absolute; left:20px; text-align: left ; " >
+	<span style=" font-family:'Arial'; font-size:11pt;">
+	<table cellspacing=10>
+		<tr>
+			<th colspan=4><u><%=u.name%></u></th>
+		</tr>
+		<tr>
+			<th>Sex : </th>
+			<td><%=u.sex%></td>
+			<th>Hour of birth : </th>
+			<td><%=u.hour_of_birth%></td>
+		</tr>
+		<tr>
+			<th>Born : </td>
+			<td><%=u.born_city%></td>
+			<th>Now lives : </th>
+			<td><%=u.living_city%></td>
+		</tr>
+		<tr>
+			<th>Qualities :</th>
+			<td colspan=3>
+				<%u.qualities.each do |q|%>
+					<%= q %>, 
+				<%end%>
+			</td>
+		</tr>
+		<tr>
+			<th>Biography :</th>
+			<td colspan=3>
+				<%=link_to "Click to read full biography and send messages", "/showprofile/#{u.id}"%>
+			</td>
+	</tr>
+	</table>
+	</span>
+	</div>
+	<br><br><br><br><br><br><br><br><br>
+   <%end%>
+<%end%>
+<%end%>

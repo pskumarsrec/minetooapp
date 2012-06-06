@@ -1,0 +1,86 @@
+     
+      .wrapper{
+        margin:0px auto;
+        width:70%;
+      }
+      nav{
+        background-color: #3B6AA0	;
+        height:30px;
+        padding:0 10px;
+        width:980px;
+      }
+      nav ul
+      {
+        list-style:none;
+      }
+      nav ul li
+      {
+        display:block;
+        float:left;
+        width:100px;
+      }
+      .menu1 li
+      {
+        display:block;
+        float:left;
+        width:90px;
+      } 
+      .menu2 li
+      {
+        display:block;Please check the date that you entered and try again
+
+        float:left;
+      }
+      nav.nav3 ul li
+      {
+        width:300px;
+      }
+      nav a
+      {
+      color:white;
+      }
+      .copyright .advertise
+      {
+        color:white;
+        text-align:center;
+        background-color:#123456;
+        width:200px;
+        height:200px;
+        margin-top:150px;
+        padding-top:30px;
+      }
+
+      .content
+      {
+        background-color:white;
+        width:1000px;
+        padding-top:20px;
+        min-height:480px;
+      }
+      .left
+      {
+        display:block;
+        float:left;
+        width:700px;
+        background-color:white ;
+        padding-left:50px;
+        padding-bottom:40px;
+      }
+      .right
+      {
+        display:block;
+        float:left;
+        width:228px;
+        border-left:2px solid red;
+      }
+      .advertise
+      {
+        color:white;
+        text-align:center;
+        background-color:#123456;
+        width:200px;
+        height:200px;
+        margin-top:150px;
+        padding-top:30px;
+      }
+      

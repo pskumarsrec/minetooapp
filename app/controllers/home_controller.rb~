@@ -1,0 +1,16 @@
+class HomeController < ApplicationController
+  #before_filter :authenticate_user!
+  def home
+    @user=User.new
+  end
+  # POST /registration/profile
+  def profile
+    
+  end
+
+  # POST /registration/quality
+  def quality
+    
+  end
+end
+

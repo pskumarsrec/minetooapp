@@ -1,0 +1,39 @@
+<script src="/javascripts/live.js"></script>
+
+<div style="position:absolute; left:100px; top:130px; text-align: left ; font-family:'Arial'; font-size:10pt;" >
+<%= form_tag(:controller => "static", :action => "adminmail") do %>
+	<table cellspacing=20>
+		<% if user_signed_in? %>
+				<%=hidden_field :mail, :from, :value=>current_user.email%>
+		<% else %>
+			<tr>
+				<th>From</th>
+				<td><%= text_field :mail, :from, "size" => 20%><font color="red">*</font></td>
+			</tr>
+		<% end %>
+		<tr>
+			<th>To</th>
+			<td><%= text_field :mail, :to, "value" =>"pskumarsrec88@gmail.com", "size" => 20%></td>
+		</tr>
+		<tr>
+			<th>Subject</th>
+			<td><%= text_field :mail, :subject, "size" => 20%><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<th>Message</th>
+			<td><%=text_area :mail, :message, :rows=>10, :cols=>30 %><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= submit_tag 'Contact Admin' %></td>
+		</tr>	
+	</table>
+<% end %>
+</div>
+
+<script>
+var f1 = new LiveValidation('mail_subject');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('mail_message');
+f1.add( Validate.Presence );
+</script>

@@ -1,0 +1,35 @@
+
+<br><br><br><br><br><br>
+<div style="position:absolute; left:30px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<h3>Bulletin Board for <%= current_user.date_of_birth %></h3>
+<h3>Your message has been posted. Thanks for contributing.</h3>
+<br>
+<% if @mesg.present? %>
+	<% i=0 %>
+	<%@mesg.each do |f|%>
+		<table class="curvedEdges" cellspacing=5 width="500" >
+			<tr>
+				<th width="100">From  </th>
+				<td><%= @sender[i] %></td>
+			</tr>
+			<tr>
+				<th width="100">Message  </th>
+				<td><%=f.message %></td>
+			</tr>
+			<tr>
+				<th width="100">Date posted </th>
+				<td><%= f.created_at %></td>
+			</tr>
+		</table>
+		<% i=i+1 %>
+		<br>
+	<% end %>
+<% else %>
+	<h3>No Bulletin Message for <%= current_user.date_of_birth %></h3>
+<% end %>
+
+</div>
+
+<style type="text/css">
+table.curvedEdges { border:3px solid #98FB98; }
+</style>

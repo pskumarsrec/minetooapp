@@ -1,0 +1,60 @@
+<script src="/javascripts/live.js"></script>
+<div style="position:absolute; left:50px; top:115px; text-align: left ; font-family:'Arial'; font-size:10pt;" >
+<h2>Preferences</h2>
+<br>
+<ul id="list-nav">
+	<li><u><%= link_to "Password",edit_user_registration_path %></u></li>
+	<li><u><%= link_to "Contact",contact_path %></u></li>
+</ul>
+<br><br><br>
+<%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	<%= f.error_messages %>
+	<p>Change the password you use to log onto the site. <br>You must enter current password to confirm the change.</p>
+	<table class="curvedEdges" cellspacing=10>		
+		<tr>
+			<th><%= f.label :current_password %></th>
+			<td><%= f.password_field :current_password %><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<th><%= f.label :new_password %></th>
+			<td><%= f.password_field :password %><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<th><%= f.label :confirm_password %></th>
+			<td><%= f.password_field :password_confirmation %><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td align=center><%= f.submit "Change password" %></td>
+		</tr>
+	</table>
+<% end %>
+</div>
+
+<style type="text/css">
+
+ul#list-nav li {
+display:inline
+}
+
+ul#list-nav li u {
+text-decoration:none;
+padding:5px 0;
+width:150px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+table.curvedEdges { border:3px solid #98FB98; }
+</style>
+
+<script>
+var f1 = new LiveValidation('user_current_password');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation('user_password');
+f2.add( Validate.Presence );
+var f3 = new LiveValidation('user_password_confirmation');
+f3.add( Validate.Presence );
+</script>

@@ -1,0 +1,30 @@
+
+<div style="position:absolute; left:50px; top:115px; text-align: left ; font-family:'Arial'; font-size:12pt;" >
+<h2>Myself</h2>
+
+	<p>Changes saved. Your updated biography is now published</p>
+	<table class="curvedEdges" cellspacing=10 width=400>		
+		<tr>
+			<th>Name</th>
+			<td><%= current_user.name %></td>
+		</tr>
+		<tr>
+			<th>Born in</th>
+			<td><p><%= params[:user][:born_city] %> ( <%= params[:user][:born_country] %> )</p></td>
+		</tr>
+		<tr>
+			<th>Live in</th>
+			<td><p><%= params[:user][:living_city] %> ( <%= params[:user][:living_country] %> )</p></td>
+		</tr>
+		<tr>
+			<th>Biography</th>
+			<td><%= params[:user][:biography]%></td>
+		</tr>
+	</table>
+
+</div>
+
+
+<style type="text/css">
+table.curvedEdges { border:3px solid #98FB98; }
+</style>

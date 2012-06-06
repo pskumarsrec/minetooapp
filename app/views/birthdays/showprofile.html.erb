@@ -1,0 +1,52 @@
+ <%if !@profile.blank? %> 
+<%p=@profile%>
+<div style="position:absolute; left:120px; top:115px; text-align: left ; font-family:'Arial'; font-size:10pt; color:#3366FF;" >
+<h2>Details about <%=p.name%></h2><br>
+</div>
+<div style="position:absolute; left:100px; top:160px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<table cellspacing="20">
+	<tr>
+		<th>Name</th>
+		<td><%=p.name%><br></td>
+	</tr>
+	<tr>
+		<th>Sex</th>
+		<td><%=p.sex%><br></td>
+	</tr>
+	<tr>
+		<th>Date of birth</th>
+		<td><%=p.date_of_birth    %></td>
+	</tr>
+	<tr>
+		<th>Hour of birth</th>
+		<td><%=p.hour_of_birth    %></td>
+	</tr>
+	<tr>
+		<th>Born in</th>
+		<td><%=p.born_city%></td>
+	</tr>
+	<tr>
+		<th>Lives in</th>
+		<td><%=p.living_city%></td>
+	</tr>
+	<tr>
+		<th>Qualities</th>
+		<td>
+			<%p.qualities.each do |q|%>
+				<%= q %>,
+			<%end%>
+		</td>
+	</tr>
+	<tr>
+		<th>Biography</th>
+		<td><%=p.biography%></td>
+	</tr>
+	<tr>
+	  <td colspan=2><br><%=link_to "Send message to #{p.name}", "/sendmessage/#{p.id}"%></td>
+	</tr>
+	
+</table>
+</div>
+<%else%>
+not found
+<%end%>

@@ -1,0 +1,26 @@
+
+<br><br><br><br><br><br>
+<div style="position:absolute; left:30px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBulletin Board for <%= current_user.date_of_birth %></h3>
+<table cellspacing=10>
+	<%=form_for :message, :url=>{:action=>"sendmessage", :controller=>"bulletins"} do |f|%>
+		<tr>
+			<td><%=f.hidden_field :user_id, :value=>current_user.id%></td>
+			<td><%=f.hidden_field :birth_date, :value=>current_user.date_of_birth%></td>
+			<td><%=f.label :message,"Message"%></td>			
+			<td><%=f.text_area :message, :size => '40x10'%><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td>
+			<td><p class="alert"><font color="red"><%= alert %></font></p></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td>
+			<td colspan=3><%=f.submit 'Post message to bulletin board'%></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td>
+			<td><%= link_to "Cancel posting",showbulletin_path %></td>
+		</tr>	
+	<%end%>
+</div>
