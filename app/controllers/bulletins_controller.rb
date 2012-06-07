@@ -29,6 +29,9 @@ class BulletinsController < ApplicationController
 				flash[:alert] = "Empty message not allowed"
 				render :sendbulletin
 			end
+		else
+			flash[:alert] = "Empty message not allowed"
+			render :sendbulletin
 		end
 	end
 	
