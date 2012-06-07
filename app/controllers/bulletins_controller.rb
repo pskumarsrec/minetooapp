@@ -23,11 +23,12 @@ class BulletinsController < ApplicationController
 	def sendmessage
 		@msg= Bulletin.new(params[:message])
 		unless params[:message][:message].empty?
-			@msg.save
-			redirect_to "/aftersendbulletin"
-		else
-			flash[:alert] = "Empty message not allowed"
-			render :sendbulletin
+			if @msg.save
+				redirect_to "/aftersendbulletin"
+			else
+				flash[:alert] = "Empty message not allowed"
+				render :sendbulletin
+			end
 		end
 	end
 	
