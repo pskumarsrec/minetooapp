@@ -1,4 +1,4 @@
 class Bulletin < ActiveRecord::Base
 	belongs_to  :user
-	validates_presence_of  :message, :receiver
+	validates_presence_of  :message, :user_id
 end
