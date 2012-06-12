@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+
+<%=form_for :user, :url=>{:action=>'update', :controller=>'authentications'}, :html=>{:onsubmit=>"return validateform(this)"} do |f|%>
+<div style="position:absolute; left:30px; top:120px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
+<h3> You are Entered into MineToo Via FaceBook</h3>
+<h4>If you want to enter into MineToo please fill the below details</h4>
+<table cellspacing=15>
+	<tr>
+		<th>Password</th>
+		<td><%= f.password_field :password, "size"=>20%> <font color="red">*</font></td></td>
+	</tr>
+	<tr>
+		<th>Your Birthdate</th>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth" size=20> <font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Sex</th>
+		<td><%= f.radio_button :sex, 'male', :checked => true %>
+		<%= label :male, 'Male' %>
+		<%= f.radio_button :sex, 'Female' %> 
+		<%= label :female, 'Female' %> <font color="red">*</font> </td>
+	</tr>
+	<tr>
+		<th>Hour of Birth</th>
+		<td><%= f.select :hour_of_birth, options_for_select(['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12noon', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'], {:include_blank => 'None'}) %><font color="red">*</font></td>
+	</tr>
+	<tr>
+		<th>Where do you live?</th>
+		<td>Town/City <%= f.text_field :living_city, "size"=>12%><font color="red">* </font> <%= f.country_select :living_country %><font color="red">*</font></td>
+	</tr>
+	
+	<tr>
+		<th>Where do you Born?</th>
+		<td>Town/City <%= f.text_field :born_city, "size"=>12%><font color="red">* </font> <%= f.country_select :born_country %><font color="red">*</font></td>
+	</tr>	
+</table>
+
+
+
+<table>
+	<tr>
+		<th>Biography</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%=f.text_area :biography, :rows=>10, :cols=>50%><font color="red">*</font><br></td>
+	</tr>
+	<tr>
+		<th></th><td></td>
+		<td><%= f.submit "Next" %></td>
+	</tr>
+</table>
+</div>
+<% end %>
+
+<script>
+     $(function() {
+             $( ".datepick" ).datepicker(
+	     { 
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-60:+0 "
+	     
+	     }); 
+     });
+</script>

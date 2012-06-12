@@ -12,7 +12,12 @@
 	     }); 
      });
 </script>
-   
+<%unless current_user%>
+<div style="position:absolute; left:750px; top:90px; width:5px; height:5px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<%= link_to image_tag("facebook1.jpeg"), "/auth/facebook" %>
+</div>
+<%end%>
+
 <DIV id=u36 style="position:absolute; left:15px; top:175px; width:500px; height:85px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
 <DIV id=u36_rtf><span style=" font-family:'Verdana'; color:#000000; font-size:14pt;"><i>Who shares your birthday?<br>&nbsp; &nbsp;&nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Are they closer than you think?</i></span></DIV></DIV>
 <DIV id=u37 style="position:absolute; left:180px; top:341px; width:160px; height:15px; ; ; text-align: left ; font-family:Arial; text-align:left;" >

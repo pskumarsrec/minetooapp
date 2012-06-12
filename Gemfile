@@ -8,6 +8,8 @@ gem 'jquery_datepicker'
 gem 'heroku'
 gem 'pg'
 gem 'will_paginate'
+gem 'omniauth-twitter'
+gem "omniauth-facebook"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

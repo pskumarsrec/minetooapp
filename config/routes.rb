@@ -1,5 +1,8 @@
 Devise::Application.routes.draw do
 
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/authentications/update' => 'authentications#update'
+  match '/authentications/edit' => 'authentications#edit'
   #Routes for home path
   root :to => "home#home"
    
