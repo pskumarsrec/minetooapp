@@ -33,7 +33,7 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 :domain => "gmail.com",
 :authentication => :plain,
 :user_name => "pskcoolking@gmail.com" ,
-:password => "51425162"
+:password => "*********"
 }
 
 config.action_mailer.perform_deliveries = true

@@ -57,7 +57,7 @@ Devise::Application.configure do
 :domain => "gmail.com",
 :authentication => :plain,
 :user_name => "pskcoolking@gmail.com" ,
-:password => "51425162"
+:password => "************"
 }
 
 config.action_mailer.perform_deliveries = true
